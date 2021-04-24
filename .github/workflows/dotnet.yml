@@ -7,19 +7,32 @@ on:
     branches: [ master ]
 
 jobs:
+
   build:
-
     runs-on: ubuntu-18.04
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    - name: Restore dependencies
-      run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1
+        source-url: https://nuget.pkg.github.com/solvent/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
+    - name: Make NuGet package
+      run: dotnet pack -c Release -o out
+    - name: Publish
+      run: dotnet nuget push ./out/*.nupkg --skip-duplicate --no-symbols true
+
