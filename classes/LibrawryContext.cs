@@ -3,7 +3,7 @@ using librawry.portable.entities;
 
 namespace librawry.portable {
 
-	public class SqliteContext : DbContext {
+	public class LibrawryContext : DbContext {
 
 		public DbSet<Title> Titles {
 			get; set;
@@ -21,7 +21,7 @@ namespace librawry.portable {
 			get; set;
 		}
 
-		public SqliteContext(DbContextOptions<SqliteContext> options) : base(options) {
+		public LibrawryContext(DbContextOptions<LibrawryContext> options) : base(options) {
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder) {
