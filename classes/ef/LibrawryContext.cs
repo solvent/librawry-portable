@@ -1,23 +1,23 @@
 using Microsoft.EntityFrameworkCore;
-using librawry.portable.entities;
+using librawry.portable.ef.entities;
 
-namespace librawry.portable {
+namespace librawry.portable.ef {
 
 	public class LibrawryContext : DbContext {
 
-		public DbSet<Title> Titles {
+		internal DbSet<Title> Titles {
 			get; set;
 		}
 
-		public DbSet<Episode> Episodes {
+		internal DbSet<Episode> Episodes {
 			get; set;
 		}
 
-		public DbSet<Tag> Tags {
+		internal DbSet<Tag> Tags {
 			get; set;
 		}
 
-		public DbSet<TagRef> TagRefs {
+		internal DbSet<TagRef> TagRefs {
 			get; set;
 		}
 

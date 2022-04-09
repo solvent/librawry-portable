@@ -1,6 +1,6 @@
-namespace librawry.portable.entities {
+namespace librawry.portable.ef.entities {
 
-	public class TagRef {
+	internal class TagRef {
 
 		public int TitleId {
 			get; set;

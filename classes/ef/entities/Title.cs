@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace librawry.portable.entities {
+namespace librawry.portable.ef.entities {
 
-	public class Title {
+	internal class Title {
 
 		public int Id {
 			get; set;

@@ -1,6 +1,6 @@
-namespace librawry.portable.entities {
+namespace librawry.portable.ef.entities {
 
-	public class Episode {
+	internal class Episode {
 
 		public int Id {
 			get; set;
