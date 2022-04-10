@@ -4,7 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<RootNamespace>librawry.portable</RootNamespace>
 		<PackageId>Solvent.Librawry.Portable</PackageId>
-		<Version>6.1.0</Version>
+		<Version>6.1.1</Version>
 		<RepositoryUrl>https://github.com/solvent/librawry-portable</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<Description>Some shared code reused for all librawry projects</Description>
