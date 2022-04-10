@@ -13,15 +13,29 @@ namespace librawry.portable.repo {
 		public TitleRepository(LibrawryContext context) : base(context) {
 		}
 
-		public virtual async Task<IEnumerable<ListResponse>> GetList(string searchText) {
-			var search = string.Join("%", searchText.Split(' '));
+		public virtual async Task<IEnumerable<ListResponse>> GetList(ListRequest param) {
+			var query = context.Titles.AsQueryable();
 
-			return await context.Titles
-				.Where(x =>
+			if (param.Search != null) {
+				var search = string.Join("%", param.Search.Split(' '));
+
+				query = query.Where(x =>
 					EF.Functions.Like(x.Name, $"%{search}%") ||
 					x.Episodes.Any(y => EF.Functions.Like(y.Name, $"%{search}%"))
-				)
-				.OrderBy(x => x.Name)
+				);
+			}
+
+			query = query.OrderBy(x => x.Name);
+
+			if (param.Skip != null) {
+				query = query.Skip(param.Skip.Value);
+			}
+
+			if (param.Take != null) {
+				query = query.Take(param.Take.Value);
+			}
+
+			return await query
 				.Select(x => new ListResponse {
 					Id = x.Id,
 					Name = x.Name,
