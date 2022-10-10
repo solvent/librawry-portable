@@ -1,13 +1,18 @@
+using System;
+
 namespace librawry.portable.ef.entities {
 
 	internal class TagRef {
+		private Tag? _tag;
+		private Title? _title;
 
 		public int TitleId {
 			get; set;
 		}
 
 		public Title Title {
-			get; set;
+			get => _title ?? throw new InvalidOperationException();
+			set => _title = value;
 		}
 
 		public int TagId {
@@ -15,7 +20,8 @@ namespace librawry.portable.ef.entities {
 		}
 
 		public Tag Tag {
-			get; set;
+			get => _tag ?? throw new InvalidOperationException();
+			set => _tag = value;
 		}
 	}
 

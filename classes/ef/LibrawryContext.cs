@@ -5,21 +5,10 @@ namespace librawry.portable.ef {
 
 	public class LibrawryContext : DbContext {
 
-		internal DbSet<Title> Titles {
-			get; set;
-		}
-
-		internal DbSet<Episode> Episodes {
-			get; set;
-		}
-
-		internal DbSet<Tag> Tags {
-			get; set;
-		}
-
-		internal DbSet<TagRef> TagRefs {
-			get; set;
-		}
+		internal DbSet<Title> Titles => Set<Title>();
+		internal DbSet<Episode> Episodes => Set<Episode>();
+		internal DbSet<Tag> Tags => Set<Tag>();
+		internal DbSet<TagRef> TagRefs => Set<TagRef>();
 
 		public LibrawryContext(DbContextOptions<LibrawryContext> options) : base(options) {
 		}

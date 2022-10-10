@@ -6,7 +6,7 @@ namespace librawry.portable {
 
 	public interface ITitleRepository {
 		Task<IEnumerable<ListResponse>> GetList(ListRequest param);
-		Task<DetailsResponse> GetDetails(int id);
+		Task<DetailsResponse?> GetDetails(int id);
 	}
 
 }

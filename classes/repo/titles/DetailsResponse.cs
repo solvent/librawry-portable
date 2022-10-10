@@ -25,5 +25,12 @@ namespace librawry.portable.repo.titles {
 		public IEnumerable<Tag> Tags {
 			get; set;
 		}
+
+		public DetailsResponse(int id, string name, IEnumerable<Episode> episodes, IEnumerable<Tag> tags) {
+			Id = id;
+			Name = name;
+			Episodes = episodes;
+			Tags = tags;
+		}
 	}
 }

@@ -6,7 +6,7 @@ namespace librawry.portable.repo.titles {
 	public class ListRequest {
 		[JsonPropertyName("search")]
 		[MinLength(3)]
-		public string Search {
+		public string? Search {
 			get; set;
 		}
 

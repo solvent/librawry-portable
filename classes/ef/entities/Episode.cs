@@ -1,6 +1,9 @@
+using System;
+
 namespace librawry.portable.ef.entities {
 
 	internal class Episode {
+		private Title? _title;
 
 		public int Id {
 			get; set;
@@ -15,7 +18,12 @@ namespace librawry.portable.ef.entities {
 		}
 
 		public Title Title {
-			get; set;
+			get => _title ?? throw new InvalidOperationException();
+			set => _title = value;
+		}
+
+		public Episode(string name) {
+			Name = name;
 		}
 	}
 

@@ -36,37 +36,23 @@ namespace librawry.portable.repo {
 			}
 
 			return await query
-				.Select(x => new ListResponse {
-					Id = x.Id,
-					Name = x.Name,
-					Tags = x.TagRefs
-						.Select(y => y.Tag)
-						.Select(y => new Tag {
-							Id = y.Id,
-							Name = y.Name
-						}),
-				})
+				.Select(x => new ListResponse(
+					x.Id,
+					x.Name,
+					x.TagRefs.Select(y => new Tag(y.Tag.Id, y.Tag.Name))
+				))
 				.ToListAsync();
 		}
 
-		public virtual async Task<DetailsResponse> GetDetails(int id) {
+		public virtual async Task<DetailsResponse?> GetDetails(int id) {
 			return await context.Titles
 				.Where(x => x.Id == id)
-				.Select(x => new DetailsResponse {
-					Id = x.Id,
-					Name = x.Name,
-					Tags = x.TagRefs
-						.Select(y => y.Tag)
-						.Select(y => new Tag {
-							Id = y.Id,
-							Name = y.Name
-						}),
-					Episodes = x.Episodes
-						.Select(y => new Episode {
-							Id = y.Id,
-							Name = y.Name
-						})
-				})
+				.Select(x => new DetailsResponse(
+					x.Id,
+					x.Name,
+					x.Episodes.Select(y => new Episode(y.Id, y.Name)),
+					x.TagRefs.Select(y => new Tag(y.Tag.Id, y.Tag.Name))
+				))
 				.AsSplitQuery()
 				.FirstOrDefaultAsync();
 		}

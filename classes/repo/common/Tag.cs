@@ -13,5 +13,10 @@ namespace librawry.portable.repo.common {
 		public string Name {
 			get; set;
 		}
+
+		public Tag(int id, string name) {
+			Id = id;
+			Name = name;
+		}
 	}
 }
