@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace librawry.portable {
+namespace librawry.portable;
 
-	public interface IUnitOfWork : IDisposable {
-		ITitleRepository TitleRepository { get; }
-		Task CompleteAsync();
-	}
-
+public interface IUnitOfWork : IDisposable {
+	ITitleRepository TitleRepository { get; }
+	Task CompleteAsync();
 }

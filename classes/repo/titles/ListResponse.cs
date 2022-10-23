@@ -2,29 +2,28 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using librawry.portable.repo.common;
 
-namespace librawry.portable.repo.titles {
+namespace librawry.portable.repo.titles;
 
-	public class ListResponse {
+public class ListResponse {
 
-		[JsonPropertyName("id")]
-		public int Id {
-			get; set;
-		}
+	[JsonPropertyName("id")]
+	public int Id {
+		get; set;
+	}
 
-		[JsonPropertyName("name")]
-		public string Name {
-			get; set;
-		}
+	[JsonPropertyName("name")]
+	public string Name {
+		get; set;
+	}
 
-		[JsonPropertyName("tags")]
-		public IEnumerable<Tag> Tags {
-			get; set;
-		}
+	[JsonPropertyName("tags")]
+	public IEnumerable<Tag> Tags {
+		get; set;
+	}
 
-		public ListResponse(int id, string name, IEnumerable<Tag> tags) {
-			Id = id;
-			Name = name;
-			Tags = tags;
-		}
+	public ListResponse(int id, string name, IEnumerable<Tag> tags) {
+		Id = id;
+		Name = name;
+		Tags = tags;
 	}
 }
