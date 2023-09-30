@@ -1,5 +1,5 @@
 namespace librawry.portable;
 
-interface IUnitOfWorkFactory {
+public interface IUnitOfWorkFactory {
 	IUnitOfWork Create();
 }
